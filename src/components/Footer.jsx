@@ -1,0 +1,37 @@
+import { Col, Container, Row } from "react-bootstrap";
+
+export default function Footer() {
+  const socialLinks = [
+    { icon: "github", url: "https://github.com/yourusername" },
+    { icon: "linkedin", url: "https://linkedin.com/in/yourusername" },
+    { icon: "facebook", url: "https://facebook.com/yourusername" },
+    { icon: "twitter", url: "https://twitter.com/yourusername" },
+  ];
+
+  return (
+    <footer className="bg-body-tertiary py-4 mt-auto">
+      <Container>
+        <Row className="justify-content-center">
+          <Col xs={12} className="text-center">
+            {socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-decoration-none mx-2"
+              >
+                <i className={`fab fa-${social.icon} fa-lg`}></i>
+              </a>
+            ))}
+          </Col>
+          <Col xs={12} className="text-center mt-3">
+            <small>
+              &copy; {new Date().getFullYear()} PDF Hero. All rights reserved.
+            </small>
+          </Col>
+        </Row>
+      </Container>
+    </footer>
+  );
+}

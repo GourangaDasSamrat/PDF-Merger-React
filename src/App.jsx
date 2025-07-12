@@ -1,22 +1,31 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
+import PDFMergerTool from "./components/PDFMergerTool";
+import Pricing from "./components/Pricing";
+import { AppProvider } from "./context/AppProvider";
 
 export default function App() {
   return (
-    <header>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
+    <AppProvider>
+      <Router>
+        <div className="d-flex flex-column min-vh-100">
+          <NavBar />
+          <main className="flex-grow-1">
+            <Routes>
+              <Route path="/" element={<PDFMergerTool />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </AppProvider>
   );
 }

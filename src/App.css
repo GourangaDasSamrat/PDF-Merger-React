@@ -1,13 +1,51 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Custom styles */
+:root {
+  --bs-body-bg: #f8f9fa;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
+[data-bs-theme="dark"] {
+  --bs-body-bg: #212529;
+}
+
+/* Dropzone styles */
+.dropzone {
+  border: 2px dashed #dee2e6;
+  border-radius: 4px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dropzone:hover,
+.dropzone.active {
+  border-color: var(--bs-primary);
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+/* Card hover effect */
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Social media icons */
+.social-icon {
+  color: var(--bs-body-color);
+  transition: color 0.2s ease;
+}
+
+.social-icon:hover {
+  color: var(--bs-primary);
+}
+
+/* Theme transition */
+body {
+  transition: background-color 0.3s ease;
+}
   will-change: filter;
   transition: filter 300ms;
 }
