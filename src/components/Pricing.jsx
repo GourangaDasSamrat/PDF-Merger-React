@@ -10,8 +10,7 @@ export default function Pricing() {
       name: "Free",
       price: "$0",
       period: "",
-      gradient: "linear-gradient(135deg, #E3E8EF 0%, #96A7C7 100%)",
-      darkText: true,
+      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
       features: [
         { text: "Merge up to 5 PDFs", icon: "📄" },
         { text: "Maximum file size: 10MB", icon: "📦" },
@@ -57,10 +56,12 @@ export default function Pricing() {
 
   return (
     <Container fluid className="pricing-section py-5 mt-5">
-      <h2 className="text-center mb-2">Choose Your Plan</h2>
-      <p className="text-center text-muted mb-5">
-        Select the perfect plan for your needs
-      </p>
+      <div className="pricing-header">
+        <h2 className="text-center mb-2">Choose Your Plan</h2>
+        <p className="text-center text-muted">
+          Select the perfect plan for your needs
+        </p>
+      </div>
       <Row className="justify-content-center">
         {plans.map((plan, index) => (
           <Col key={index} lg={4} md={6} className="mb-4">
@@ -71,8 +72,9 @@ export default function Pricing() {
               onMouseEnter={() => setHoveredPlan(index)}
               onMouseLeave={() => setHoveredPlan(null)}
               style={{
-                background: plan.gradient,
+                background: `var(--pricing-gradient, ${plan.gradient})`,
               }}
+              data-plan-type={plan.name.toLowerCase()}
             >
               {plan.popular && (
                 <div className="popular-badge">Most Popular</div>

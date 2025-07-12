@@ -1,5 +1,117 @@
 .pricing-section {
-  background: #f8f9fa;
+  background: transparent;
+  position: relative;
+  padding-top: 5rem;
+  margin-top: 0 !important;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-header {
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.pricing-card {
+  border: none;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  max-width: 340px;
+  margin: 0 auto;
+  backdrop-filter: blur(10px);
+}
+
+.pricing-card[data-plan-type="free"] {
+  --pricing-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.pricing-card[data-plan-type="plus"] {
+  --pricing-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.pricing-card[data-plan-type="pro"] {
+  --pricing-gradient: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+}
+
+.feature-item {
+  color: white !important;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.plan-name,
+.price-container,
+.feature-text {
+  color: white !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pricing-section {
+    background: transparent;
+  }
+
+  .pricing-card[data-plan-type="free"] {
+    --pricing-gradient: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  }
+
+  .pricing-card[data-plan-type="plus"] {
+    --pricing-gradient: linear-gradient(135deg, #4338ca 0%, #5b21b6 100%);
+  }
+
+  .pricing-card[data-plan-type="pro"] {
+    --pricing-gradient: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+  }
+
+  .pricing-card {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .pricing-section h2 {
+    color: var(--bs-body-color);
+  }
+
+  .pricing-section p.text-muted {
+    color: var(--bs-secondary-color) !important;
+  }
+
+  .feature-item {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .feature-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .pricing-button {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: var(--bs-dark) !important;
+  }
+
+  .pricing-button:hover {
+    background: rgba(255, 255, 255, 1) !important;
+  }
+
+  .btn-popular {
+    background: #facc15 !important;
+  }
+
+  .btn-popular:hover {
+    background: #fbbf24 !important;
+  }
+
+  .popular-badge {
+    background: #facc15;
+  }
 }
 
 .pricing-card {
