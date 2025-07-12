@@ -4,9 +4,6 @@ import { Alert, Button, Container, Form } from "react-bootstrap";
 import styled from "styled-components";
 
 const ContactContainer = styled.div`
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   margin: 2rem auto;
   max-width: 1200px;
