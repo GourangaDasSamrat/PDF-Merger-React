@@ -12,14 +12,14 @@ export default function NavBar() {
   const { theme, toggleTheme } = useAppContext();
 
   return (
-    <Navbar expand="lg" className={`bg-body-tertiary w-100`}>
-      <Container fluid>
-        <Navbar.Brand as={Link} to="/">
+    <Navbar expand="lg" className="navbar fixed-top">
+      <Container>
+        <Navbar.Brand as={Link} to="/" className="me-4">
           PDF Hero
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="mx-auto">
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
@@ -33,19 +33,20 @@ export default function NavBar() {
               Contact
             </Nav.Link>
           </Nav>
-          <Nav className="ms-auto d-flex align-items-center">
+          <Nav className="d-flex align-items-center gap-2">
             <Nav.Link
               href="https://github.com/yourusername/pdf-hero"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-icon"
             >
               <i className="fab fa-github"></i>
             </Nav.Link>
-            <Nav.Link onClick={toggleTheme}>
+            <Nav.Link onClick={toggleTheme} className="social-icon">
               <i className={`fas fa-${theme === "light" ? "moon" : "sun"}`}></i>
             </Nav.Link>
             <SignedOut>
-              <SignInButton />
+              <SignInButton mode="modal" />
             </SignedOut>
             <SignedIn>
               <UserButton afterSignOutUrl="/" />
