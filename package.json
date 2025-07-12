@@ -13,6 +13,7 @@
     "@clerk/clerk-react": "^5.33.0",
     "@emailjs/browser": "^4.4.1",
     "bootstrap": "^5.3.7",
+    "pdf-merger-js": "^5.1.2",
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
