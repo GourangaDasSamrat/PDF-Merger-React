@@ -65,10 +65,23 @@ export default function NavBar() {
               <i className={`fas fa-${theme === "light" ? "moon" : "sun"}`}></i>
             </Nav.Link>
             <SignedOut>
-              <SignInButton mode="modal" className="sign-in-button" />
+              <div className="d-flex flex-column align-items-center">
+                <SignInButton mode="modal">
+                  <button className="sign-in-button btn btn-primary">
+                    Sign In <i className="fas fa-sign-in-alt ms-1"></i>
+                  </button>
+                </SignInButton>
+              </div>
             </SignedOut>
             <SignedIn>
-              <UserButton afterSignOutUrl="/" />
+              <UserButton
+                afterSignOutUrl="/"
+                appearance={{
+                  elements: {
+                    avatarBox: "cl-userButtonBox",
+                  },
+                }}
+              />
             </SignedIn>
           </Nav>
         </Navbar.Collapse>
