@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://pdfhero.com/sitemap.xml
+Sitemap: https://pdf-hero-mauve.vercel.app/sitemap.xml

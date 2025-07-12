@@ -54,7 +54,7 @@ export default function NavBar() {
           </Nav>
           <Nav className="d-flex align-items-center gap-3">
             <Nav.Link
-              href="https://github.com/yourusername/pdf-hero"
+              href="https://github.com/GourangaDasSamrat/PDF-Merger-React"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"

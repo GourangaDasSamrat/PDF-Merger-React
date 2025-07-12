@@ -2,10 +2,16 @@ import { Col, Container, Row } from "react-bootstrap";
 
 export default function Footer() {
   const socialLinks = [
-    { icon: "github", url: "https://github.com/yourusername" },
-    { icon: "linkedin", url: "https://linkedin.com/in/yourusername" },
-    { icon: "facebook", url: "https://facebook.com/yourusername" },
-    { icon: "twitter", url: "https://twitter.com/yourusername" },
+    {
+      icon: "github",
+      url: "https://github.com/GourangaDasSamrat/",
+    },
+    {
+      icon: "linkedin",
+      url: "https://www.linkedin.com/in/gouranga-das-samrat/",
+    },
+    { icon: "facebook", url: "https://www.facebook.com/gourangadassamrat/" },
+    { icon: "twitter", url: "https://x.com/Gouranga_Khulna" },
   ];
 
   return (
