@@ -57,7 +57,7 @@ export default function Pricing() {
   return (
     <Container fluid className="pricing-section py-5 mt-5">
       <div className="pricing-header">
-        <h2 className="text-center mb-2">Choose Your Plan</h2>
+        <h2 className="text-center mt-5 mb-2">Choose Your Plan</h2>
         <p className="text-center text-muted">
           Select the perfect plan for your needs
         </p>
