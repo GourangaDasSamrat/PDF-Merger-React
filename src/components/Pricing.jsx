@@ -44,7 +44,7 @@ export default function Pricing() {
   };
 
   return (
-    <Container className="py-5">
+    <Container fluid className="py-5">
       <h2 className="text-center mb-5">Choose Your Plan</h2>
       <Row>
         {plans.map((plan, index) => (

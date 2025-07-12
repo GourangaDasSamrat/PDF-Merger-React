@@ -12,8 +12,8 @@ export default function NavBar() {
   const { theme, toggleTheme } = useAppContext();
 
   return (
-    <Navbar expand="lg" className={`bg-body-tertiary`}>
-      <Container>
+    <Navbar expand="lg" className={`bg-body-tertiary w-100`}>
+      <Container fluid>
         <Navbar.Brand as={Link} to="/">
           PDF Hero
         </Navbar.Brand>

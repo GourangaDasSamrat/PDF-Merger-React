@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-body-tertiary py-4 mt-auto">
-      <Container>
+      <Container fluid>
         <Row className="justify-content-center">
           <Col xs={12} className="text-center">
             {socialLinks.map((social, index) => (
