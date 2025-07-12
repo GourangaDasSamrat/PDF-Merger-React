@@ -19,6 +19,7 @@
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
     "react-dropzone": "^14.3.8",
+    "react-helmet-async": "^2.0.5",
     "react-router-dom": "^7.6.3",
     "styled-components": "^6.1.19"
   },

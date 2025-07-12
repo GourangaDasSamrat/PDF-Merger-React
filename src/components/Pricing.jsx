@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
 import "./Pricing.css";
 
 export default function Pricing() {
@@ -55,63 +56,85 @@ export default function Pricing() {
   };
 
   return (
-    <Container fluid className="pricing-section py-5 mt-5">
-      <div className="pricing-header">
-        <h2 className="text-center mt-5 mb-2">Choose Your Plan</h2>
-        <p className="text-center text-muted">
-          Select the perfect plan for your needs
-        </p>
-      </div>
-      <Row className="justify-content-center">
-        {plans.map((plan, index) => (
-          <Col key={index} lg={4} md={6} className="mb-4">
-            <Card
-              className={`pricing-card h-100 ${plan.popular ? "popular" : ""} ${
-                hoveredPlan === index ? "hovered" : ""
-              }`}
-              onMouseEnter={() => setHoveredPlan(index)}
-              onMouseLeave={() => setHoveredPlan(null)}
-              style={{
-                background: `var(--pricing-gradient, ${plan.gradient})`,
-              }}
-              data-plan-type={plan.name.toLowerCase()}
-            >
-              {plan.popular && (
-                <div className="popular-badge">Most Popular</div>
-              )}
-              <Card.Header className="text-center border-0 bg-transparent pt-4">
-                <h3 className="plan-name mb-3">{plan.name}</h3>
-                <div className="price-container">
-                  <span className="currency">$</span>
-                  <span className="price">{plan.price.replace("$", "")}</span>
-                  <span className="period">{plan.period}</span>
-                </div>
-              </Card.Header>
-              <Card.Body>
-                <ul className="feature-list">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="feature-item">
-                      <span className="feature-icon">{feature.icon}</span>
-                      <span className="feature-text">{feature.text}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card.Body>
-              <Card.Footer className="text-center border-0 bg-transparent pb-4">
-                <Button
-                  className={`pricing-button ${
-                    plan.popular ? "btn-popular" : ""
-                  }`}
-                  variant={plan.name === "Free" ? "light" : "light"}
-                  onClick={handleUpgrade}
-                >
-                  {plan.name === "Free" ? "Current Plan" : "Upgrade Now"}
-                </Button>
-              </Card.Footer>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <>
+      <Helmet>
+        <title>Pricing - PDF Merger Tool</title>
+        <meta
+          name="description"
+          content="View our competitive pricing plans for the PDF merger tool. Find the perfect plan for your PDF merging needs."
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon/favicon-96x96.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+      </Helmet>
+      <Container fluid className="pricing-section py-5 mt-5">
+        <div className="pricing-header">
+          <h2 className="text-center mt-5 mb-2">Choose Your Plan</h2>
+          <p className="text-center text-muted">
+            Select the perfect plan for your needs
+          </p>
+        </div>
+        <Row className="justify-content-center">
+          {plans.map((plan, index) => (
+            <Col key={index} lg={4} md={6} className="mb-4">
+              <Card
+                className={`pricing-card h-100 ${
+                  plan.popular ? "popular" : ""
+                } ${hoveredPlan === index ? "hovered" : ""}`}
+                onMouseEnter={() => setHoveredPlan(index)}
+                onMouseLeave={() => setHoveredPlan(null)}
+                style={{
+                  background: `var(--pricing-gradient, ${plan.gradient})`,
+                }}
+                data-plan-type={plan.name.toLowerCase()}
+              >
+                {plan.popular && (
+                  <div className="popular-badge">Most Popular</div>
+                )}
+                <Card.Header className="text-center border-0 bg-transparent pt-4">
+                  <h3 className="plan-name mb-3">{plan.name}</h3>
+                  <div className="price-container">
+                    <span className="currency">$</span>
+                    <span className="price">{plan.price.replace("$", "")}</span>
+                    <span className="period">{plan.period}</span>
+                  </div>
+                </Card.Header>
+                <Card.Body>
+                  <ul className="feature-list">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="feature-item">
+                        <span className="feature-icon">{feature.icon}</span>
+                        <span className="feature-text">{feature.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Card.Body>
+                <Card.Footer className="text-center border-0 bg-transparent pb-4">
+                  <Button
+                    className={`pricing-button ${
+                      plan.popular ? "btn-popular" : ""
+                    }`}
+                    variant={plan.name === "Free" ? "light" : "light"}
+                    onClick={handleUpgrade}
+                  >
+                    {plan.name === "Free" ? "Current Plan" : "Upgrade Now"}
+                  </Button>
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </>
   );
 }

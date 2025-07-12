@@ -1,6 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
+import { Helmet } from "react-helmet-async";
 import styled from "styled-components";
 
 const ContactContainer = styled.div`
@@ -65,61 +66,83 @@ function Contact() {
   };
 
   return (
-    <Container fluid className="py-5">
-      <ContactContainer>
-        <div className="row justify-content-center">
-          <div className="col-md-8">
-            <h2 className="text-center mb-4">Contact Us</h2>
-            <p className="text-center mb-4">
-              Have questions or feedback? We'd love to hear from you!
-            </p>
+    <>
+      <Helmet>
+        <title>Contact Us - PDF Merger Tool</title>
+        <meta
+          name="description"
+          content="Get in touch with our team for any questions or support regarding our PDF merger tool. We're here to help!"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon/favicon-96x96.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+      </Helmet>
+      <Container fluid className="py-5">
+        <ContactContainer>
+          <div className="row justify-content-center">
+            <div className="col-md-8">
+              <h2 className="text-center mb-4">Contact Us</h2>
+              <p className="text-center mb-4">
+                Have questions or feedback? We'd love to hear from you!
+              </p>
 
-            {status.message && (
-              <Alert variant={status.type} className="mb-4">
-                {status.message}
-              </Alert>
-            )}
+              {status.message && (
+                <Alert variant={status.type} className="mb-4">
+                  {status.message}
+                </Alert>
+              )}
 
-            <ContactForm ref={formRef} onSubmit={handleSubmit}>
-              <Form.Group className="mb-3">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="user_name"
-                  placeholder="Your name"
-                  required
-                />
-              </Form.Group>
+              <ContactForm ref={formRef} onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="user_name"
+                    placeholder="Your name"
+                    required
+                  />
+                </Form.Group>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="user_email"
-                  placeholder="Your email"
-                  required
-                />
-              </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    name="user_email"
+                    placeholder="Your email"
+                    required
+                  />
+                </Form.Group>
 
-              <Form.Group className="mb-3">
-                <Form.Label>Message</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  name="message"
-                  rows={5}
-                  placeholder="Your message"
-                  required
-                />
-              </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Message</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    name="message"
+                    rows={5}
+                    placeholder="Your message"
+                    required
+                  />
+                </Form.Group>
 
-              <SubmitButton type="submit" disabled={loading}>
-                {loading ? "Sending..." : "Send Message"}
-              </SubmitButton>
-            </ContactForm>
+                <SubmitButton type="submit" disabled={loading}>
+                  {loading ? "Sending..." : "Send Message"}
+                </SubmitButton>
+              </ContactForm>
+            </div>
           </div>
-        </div>
-      </ContactContainer>
-    </Container>
+        </ContactContainer>
+      </Container>
+    </>
   );
 }
 

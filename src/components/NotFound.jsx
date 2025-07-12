@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -39,11 +40,33 @@ const StyledLink = styled(Link)`
 
 const NotFound = () => {
   return (
-    <NotFoundContainer>
-      <Title>404</Title>
-      <Message>Oops! The page you're looking for doesn't exist.</Message>
-      <StyledLink to="/">Back to Home</StyledLink>
-    </NotFoundContainer>
+    <>
+      <Helmet>
+        <title>404 - Page Not Found | PDF Merger Tool</title>
+        <meta
+          name="description"
+          content="The page you are looking for could not be found. Please check the URL or return to our homepage."
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon/favicon-96x96.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+      </Helmet>
+      <NotFoundContainer>
+        <Title>404</Title>
+        <Message>Oops! The page you're looking for doesn't exist.</Message>
+        <StyledLink to="/">Back to Home</StyledLink>
+      </NotFoundContainer>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import PDFMerger from "pdf-merger-js";
 import { useCallback, useState } from "react";
 import { Alert, Button, Card, Container } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
+import { Helmet } from "react-helmet-async";
 import { useAppContext } from "../context/AppContext";
 
 export default function PDFMergerTool() {
@@ -80,76 +81,98 @@ export default function PDFMergerTool() {
   };
 
   return (
-    <Container className="py-5 mt-5">
-      <SignedOut>
-        <Alert variant="info">Please sign in to merge PDFs</Alert>
-      </SignedOut>
+    <>
+      <Helmet>
+        <title>PDF Merger - Combine PDF Files Online</title>
+        <meta
+          name="description"
+          content="Merge multiple PDF files into one document easily with our free online PDF merger tool. Fast, secure, and user-friendly."
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon/favicon-96x96.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicon/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+      </Helmet>
+      <Container className="py-5 mt-5">
+        <SignedOut>
+          <Alert variant="info">Please sign in to merge PDFs</Alert>
+        </SignedOut>
 
-      <SignedIn>
-        <Card className="shadow-sm">
-          <Card.Body>
-            <div
-              {...getRootProps()}
-              className={`border-2 border-dashed rounded p-4 text-center ${
-                isDragActive ? "bg-light" : ""
-              }`}
-            >
-              <input {...getInputProps()} />
-              <i className="fas fa-file-pdf fa-3x mb-3"></i>
-              <p>Drag and drop PDF files here, or click to select files</p>
-            </div>
-
-            {error && (
-              <Alert variant="danger" className="mt-3">
-                {error}
-              </Alert>
-            )}
-
-            {files.length > 0 && (
-              <div className="mt-3">
-                <h5>Selected Files:</h5>
-                {files.map((file, index) => (
-                  <div key={index} className="d-flex align-items-center mb-2">
-                    <i className="fas fa-file-pdf me-2"></i>
-                    <span>{file.name}</span>
-                    <Button
-                      variant="link"
-                      className="ms-auto text-danger"
-                      onClick={() => removeFile(index)}
-                    >
-                      <i className="fas fa-times"></i>
-                    </Button>
-                  </div>
-                ))}
-
-                <Button
-                  variant="primary"
-                  className="mt-3"
-                  onClick={handleMerge}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <>
-                      <span className="spinner-border spinner-border-sm me-2" />
-                      Merging...
-                    </>
-                  ) : (
-                    "Merge PDFs"
-                  )}
-                </Button>
+        <SignedIn>
+          <Card className="shadow-sm">
+            <Card.Body>
+              <div
+                {...getRootProps()}
+                className={`border-2 border-dashed rounded p-4 text-center ${
+                  isDragActive ? "bg-light" : ""
+                }`}
+              >
+                <input {...getInputProps()} />
+                <i className="fas fa-file-pdf fa-3x mb-3"></i>
+                <p>Drag and drop PDF files here, or click to select files</p>
               </div>
-            )}
 
-            {mergeCount > 0 && (
-              <div className="mt-3">
-                <small className="text-muted">
-                  You have used {mergeCount}/5 free merges
-                </small>
-              </div>
-            )}
-          </Card.Body>
-        </Card>
-      </SignedIn>
-    </Container>
+              {error && (
+                <Alert variant="danger" className="mt-3">
+                  {error}
+                </Alert>
+              )}
+
+              {files.length > 0 && (
+                <div className="mt-3">
+                  <h5>Selected Files:</h5>
+                  {files.map((file, index) => (
+                    <div key={index} className="d-flex align-items-center mb-2">
+                      <i className="fas fa-file-pdf me-2"></i>
+                      <span>{file.name}</span>
+                      <Button
+                        variant="link"
+                        className="ms-auto text-danger"
+                        onClick={() => removeFile(index)}
+                      >
+                        <i className="fas fa-times"></i>
+                      </Button>
+                    </div>
+                  ))}
+
+                  <Button
+                    variant="primary"
+                    className="mt-3"
+                    onClick={handleMerge}
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <span className="spinner-border spinner-border-sm me-2" />
+                        Merging...
+                      </>
+                    ) : (
+                      "Merge PDFs"
+                    )}
+                  </Button>
+                </div>
+              )}
+
+              {mergeCount > 0 && (
+                <div className="mt-3">
+                  <small className="text-muted">
+                    You have used {mergeCount}/5 free merges
+                  </small>
+                </div>
+              )}
+            </Card.Body>
+          </Card>
+        </SignedIn>
+      </Container>
+    </>
   );
 }
