@@ -47,11 +47,15 @@ body::before {
   z-index: -1;
 }
 
-/* Main content padding for fixed navbar */
+/* Main content styles */
 main,
-.main-content {
-  padding-top: calc(var(--navbar-height) + 2rem) !important;
+.main-content,
+.container-fluid,
+.container {
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  margin-top: 8rem;
 }
 
 /* Navbar styles */
@@ -63,12 +67,8 @@ main,
   box-shadow: 0 4px 30px var(--glass-shadow), 0 1px 0 rgba(255, 255, 255, 0.1);
   padding: 1.25rem 0;
   height: var(--navbar-height);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   width: 100%;
-  z-index: 1000;
+  margin-bottom: 50rem !important;
 }
 
 .navbar .container {

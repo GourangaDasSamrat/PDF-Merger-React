@@ -37,7 +37,7 @@ export default function Contact() {
   };
 
   return (
-    <Container fluid className="py-5">
+    <Container fluid className="py-5 mt-5">
       <div className="row justify-content-center">
         <div className="col-md-8">
           <h2 className="text-center mb-4">Contact Us</h2>

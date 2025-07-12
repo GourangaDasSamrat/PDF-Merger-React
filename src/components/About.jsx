@@ -2,7 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 export default function About() {
   return (
-    <Container fluid className="py-5">
+    <Container fluid className="py-5 mt-5">
       <Row className="justify-content-center">
         <Col md={8} className="text-center">
           <h2 className="mb-4">About PDF Hero</h2>

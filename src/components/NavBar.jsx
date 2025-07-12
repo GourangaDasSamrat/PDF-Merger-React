@@ -17,7 +17,7 @@ export default function NavBar() {
   };
 
   return (
-    <Navbar expand="lg" className="navbar fixed-top py-3">
+    <Navbar expand="lg" className="navbar fixed-top py-3 mb-5">
       <Container className="px-4">
         <Navbar.Brand as={Link} to="/" className="me-4 py-2">
           <span className="brand-text">PDF Hero</span>

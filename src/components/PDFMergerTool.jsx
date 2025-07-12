@@ -80,7 +80,7 @@ export default function PDFMergerTool() {
   };
 
   return (
-    <Container fluid className="py-5">
+    <Container fluid className="py-5 mt-5">
       <SignedOut>
         <Alert variant="info">Please sign in to merge PDFs</Alert>
       </SignedOut>
