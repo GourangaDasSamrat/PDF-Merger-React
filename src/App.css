@@ -7,6 +7,7 @@
   --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
   --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --navbar-height: 80px; /* Added navbar height variable */
 }
 
 [data-bs-theme="dark"] {
@@ -46,6 +47,13 @@ body::before {
   z-index: -1;
 }
 
+/* Main content padding for fixed navbar */
+main,
+.main-content {
+  padding-top: calc(var(--navbar-height) + 2rem) !important;
+  min-height: 100vh;
+}
+
 /* Navbar styles */
 .navbar {
   background: var(--glass-bg) !important;
@@ -53,39 +61,104 @@ body::before {
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   border-bottom: 1px solid var(--glass-border);
   box-shadow: 0 4px 30px var(--glass-shadow), 0 1px 0 rgba(255, 255, 255, 0.1);
-  padding: 1rem 0;
-  margin-bottom: 2rem;
-  position: sticky;
+  padding: 1.25rem 0;
+  height: var(--navbar-height);
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
 }
 
 .navbar .container {
-  padding: 0 2rem;
+  padding: 0 2.5rem;
+}
+
+.navbar-collapse {
+  padding: 1rem 0;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    padding: 1.5rem 0;
+  }
+
+  .navbar-collapse {
+    padding: 0;
+  }
+
+  .navbar .container {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: var(--glass-bg);
+    margin: 1rem -2.5rem 0;
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px) saturate(180%);
+  }
+
+  .nav-link {
+    margin: 0.5rem 0;
+  }
 }
 
 .navbar-brand {
+  position: relative;
+  padding: 0.5rem 1rem;
+  margin-right: 2rem;
+  transition: all 0.3s ease;
+}
+
+.brand-text {
   font-weight: 800;
+  font-size: 1.5rem;
   background: var(--secondary-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  padding: 0.5rem 1rem;
-  margin-right: 2rem;
-  font-size: 1.5rem;
   text-shadow: var(--text-shadow);
-  position: relative;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover .brand-text {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 0.75rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: 2px solid var(--glass-border);
 }
 
 .nav-link {
   color: var(--bs-body-color) !important;
   font-weight: 600;
   padding: 0.75rem 1.25rem !important;
-  margin: 0 0.5rem;
+  margin: 0 0.25rem;
   border-radius: 0.75rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+}
+
+.nav-text {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
 }
 
 .nav-link::before {
@@ -98,16 +171,75 @@ body::before {
   background: var(--glass-bg);
   transform: translateY(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: -1;
+  z-index: 0;
 }
 
 .nav-link:hover {
   transform: translateY(-2px);
-  color: #fff !important;
 }
 
 .nav-link:hover::before {
   transform: translateY(0);
+}
+
+.nav-link.active {
+  background: var(--glass-bg);
+  color: #fff !important;
+  box-shadow: 0 4px 15px var(--glass-shadow), 0 0 0 1px var(--glass-border);
+  transform: translateY(-2px);
+}
+
+.nav-link.active .nav-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.nav-link.active::before {
+  background: var(--primary-gradient);
+  opacity: 0.1;
+  transform: translateY(0);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  transition: all 0.3s ease;
+  margin: 0 0.25rem;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+  background: var(--primary-gradient);
+  color: #fff !important;
+}
+
+.social-icon i {
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.sign-in-button {
+  background: var(--primary-gradient) !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.75rem !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px var(--glass-shadow) !important;
+}
+
+.sign-in-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px var(--glass-shadow) !important;
 }
 
 /* Container centering */
