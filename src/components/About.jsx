@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Col, Container, Row } from "react-bootstrap";
 import styled from "styled-components";
+import "./About.css";
 
 const HeroSection = styled.div`
   background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
@@ -42,12 +43,13 @@ const HeroSection = styled.div`
 `;
 
 const FeatureCard = styled(motion.div)`
-  background: white;
+  background: var(--bs-body-bg, white);
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   height: 100%;
   transition: all 0.3s ease;
+  color: var(--bs-body-color);
 
   &:hover {
     transform: translateY(-5px);
@@ -68,10 +70,11 @@ const IconWrapper = styled.div`
 `;
 
 const MissionSection = styled.div`
-  background: #f8fafc;
+  background: var(--bs-tertiary-bg, #f8fafc);
   padding: 4rem 0;
   border-radius: 2rem;
   margin-top: 4rem;
+  color: var(--bs-body-color);
 `;
 
 export default function About() {

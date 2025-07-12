@@ -1,0 +1,25 @@
+.about-page {
+  color: var(--bs-body-color);
+}
+
+/* Dark mode specific styles */
+@media (prefers-color-scheme: dark) {
+  .feature-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  .mission-section {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  .about-page p {
+    color: var(--bs-body-color) !important;
+  }
+
+  .about-page h2,
+  .about-page h3 {
+    color: var(--bs-heading-color, var(--bs-body-color)) !important;
+  }
+}

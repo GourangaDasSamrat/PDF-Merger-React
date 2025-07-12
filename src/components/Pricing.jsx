@@ -1,40 +1,52 @@
+import { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import "./Pricing.css";
 
 export default function Pricing() {
+  const [hoveredPlan, setHoveredPlan] = useState(null);
+
   const plans = [
     {
       name: "Free",
       price: "$0",
+      period: "",
+      gradient: "linear-gradient(135deg, #E3E8EF 0%, #96A7C7 100%)",
+      darkText: true,
       features: [
-        "Merge up to 5 PDFs",
-        "Maximum file size: 10MB",
-        "Basic support",
-        "No ads",
+        { text: "Merge up to 5 PDFs", icon: "📄" },
+        { text: "Maximum file size: 10MB", icon: "📦" },
+        { text: "Basic support", icon: "💬" },
+        { text: "No ads", icon: "🚫" },
       ],
     },
     {
       name: "Plus",
-      price: "$4.99/month",
+      price: "$4.99",
+      period: "/month",
+      popular: true,
+      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       features: [
-        "Unlimited PDF merges",
-        "Maximum file size: 50MB",
-        "Priority support",
-        "No ads",
-        "Split PDFs",
-        "Cloud storage: 1GB",
+        { text: "Unlimited PDF merges", icon: "♾️" },
+        { text: "Maximum file size: 50MB", icon: "📦" },
+        { text: "Priority support", icon: "⭐" },
+        { text: "No ads", icon: "🚫" },
+        { text: "Split PDFs", icon: "✂️" },
+        { text: "Cloud storage: 1GB", icon: "☁️" },
       ],
     },
     {
       name: "Pro",
-      price: "$9.99/month",
+      price: "$9.99",
+      period: "/month",
+      gradient: "linear-gradient(135deg, #6B73FF 0%, #000DFF 100%)",
       features: [
-        "Everything in Plus",
-        "Maximum file size: Unlimited",
-        "24/7 Priority support",
-        "PDF compression",
-        "PDF encryption",
-        "Cloud storage: 10GB",
-        "API access",
+        { text: "Everything in Plus", icon: "✨" },
+        { text: "Maximum file size: Unlimited", icon: "📦" },
+        { text: "24/7 Priority support", icon: "🎯" },
+        { text: "PDF compression", icon: "🗜️" },
+        { text: "PDF encryption", icon: "🔒" },
+        { text: "Cloud storage: 10GB", icon: "☁️" },
+        { text: "API access", icon: "🔑" },
       ],
     },
   ];
@@ -44,32 +56,51 @@ export default function Pricing() {
   };
 
   return (
-    <Container fluid className="py-5 mt-5">
-      <h2 className="text-center mb-5">Choose Your Plan</h2>
-      <Row>
+    <Container fluid className="pricing-section py-5 mt-5">
+      <h2 className="text-center mb-2">Choose Your Plan</h2>
+      <p className="text-center text-muted mb-5">
+        Select the perfect plan for your needs
+      </p>
+      <Row className="justify-content-center">
         {plans.map((plan, index) => (
-          <Col key={index} md={4} className="mb-4">
-            <Card className="h-100 shadow-sm">
-              <Card.Header className="text-center">
-                <h3>{plan.name}</h3>
-                <div className="display-4">{plan.price}</div>
-                {plan.name !== "Free" && (
-                  <small className="text-muted">billed monthly</small>
-                )}
+          <Col key={index} lg={4} md={6} className="mb-4">
+            <Card
+              className={`pricing-card h-100 ${plan.popular ? "popular" : ""} ${
+                hoveredPlan === index ? "hovered" : ""
+              }`}
+              onMouseEnter={() => setHoveredPlan(index)}
+              onMouseLeave={() => setHoveredPlan(null)}
+              style={{
+                background: plan.gradient,
+              }}
+            >
+              {plan.popular && (
+                <div className="popular-badge">Most Popular</div>
+              )}
+              <Card.Header className="text-center border-0 bg-transparent pt-4">
+                <h3 className="plan-name mb-3">{plan.name}</h3>
+                <div className="price-container">
+                  <span className="currency">$</span>
+                  <span className="price">{plan.price.replace("$", "")}</span>
+                  <span className="period">{plan.period}</span>
+                </div>
               </Card.Header>
               <Card.Body>
-                <ul className="list-unstyled">
+                <ul className="feature-list">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="mb-2">
-                      <i className="fas fa-check text-success me-2"></i>
-                      {feature}
+                    <li key={i} className="feature-item">
+                      <span className="feature-icon">{feature.icon}</span>
+                      <span className="feature-text">{feature.text}</span>
                     </li>
                   ))}
                 </ul>
               </Card.Body>
-              <Card.Footer className="text-center">
+              <Card.Footer className="text-center border-0 bg-transparent pb-4">
                 <Button
-                  variant={plan.name === "Free" ? "outline-primary" : "primary"}
+                  className={`pricing-button ${
+                    plan.popular ? "btn-popular" : ""
+                  }`}
+                  variant={plan.name === "Free" ? "light" : "light"}
                   onClick={handleUpgrade}
                 >
                   {plan.name === "Free" ? "Current Plan" : "Upgrade Now"}
