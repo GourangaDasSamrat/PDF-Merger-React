@@ -1,8 +1,39 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
+import styled from "styled-components";
 
-export default function Contact() {
+const ContactContainer = styled.div`
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+`;
+
+const ContactForm = styled(Form)`
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const SubmitButton = styled(Button)`
+  width: 100%;
+  padding: 0.8rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  background-color: #1a73e8;
+  border-color: #1a73e8;
+
+  &:hover {
+    background-color: #1557b0;
+    border-color: #1557b0;
+  }
+`;
+
+function Contact() {
   const [status, setStatus] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(false);
   const formRef = useRef();
@@ -14,10 +45,10 @@ export default function Contact() {
 
     try {
       await emailjs.sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        "YOUR_PUBLIC_KEY"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       setStatus({
@@ -37,70 +68,62 @@ export default function Contact() {
   };
 
   return (
-    <Container fluid className="py-5 mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          <h2 className="text-center mb-4">Contact Us</h2>
-          <p className="text-center mb-4">
-            Have questions or feedback? We'd love to hear from you!
-          </p>
+    <Container fluid className="py-5">
+      <ContactContainer>
+        <div className="row justify-content-center">
+          <div className="col-md-8">
+            <h2 className="text-center mb-4">Contact Us</h2>
+            <p className="text-center mb-4">
+              Have questions or feedback? We'd love to hear from you!
+            </p>
 
-          {status.message && (
-            <Alert variant={status.type} className="mb-4">
-              {status.message}
-            </Alert>
-          )}
+            {status.message && (
+              <Alert variant={status.type} className="mb-4">
+                {status.message}
+              </Alert>
+            )}
 
-          <Form ref={formRef} onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="user_name"
-                required
-                placeholder="Enter your name"
-              />
-            </Form.Group>
+            <ContactForm ref={formRef} onSubmit={handleSubmit}>
+              <Form.Group className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="user_name"
+                  placeholder="Your name"
+                  required
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                name="user_email"
-                required
-                placeholder="Enter your email"
-              />
-            </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="user_email"
+                  placeholder="Your email"
+                  required
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Message</Form.Label>
-              <Form.Control
-                as="textarea"
-                name="message"
-                required
-                rows={5}
-                placeholder="Your message"
-              />
-            </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  name="message"
+                  rows={5}
+                  placeholder="Your message"
+                  required
+                />
+              </Form.Group>
 
-            <Button
-              variant="primary"
-              type="submit"
-              className="w-100"
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  <span className="spinner-border spinner-border-sm me-2" />
-                  Sending...
-                </>
-              ) : (
-                "Send Message"
-              )}
-            </Button>
-          </Form>
+              <SubmitButton type="submit" disabled={loading}>
+                {loading ? "Sending..." : "Send Message"}
+              </SubmitButton>
+            </ContactForm>
+          </div>
         </div>
-      </div>
+      </ContactContainer>
     </Container>
   );
 }
+
+export default Contact;
