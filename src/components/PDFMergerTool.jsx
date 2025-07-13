@@ -26,6 +26,26 @@ export default function PDFMergerTool() {
     setError("");
   }, []);
 
+  const moveFile = (index, direction) => {
+    setFiles((prevFiles) => {
+      const newFiles = [...prevFiles];
+      if (direction === "up" && index > 0) {
+        [newFiles[index], newFiles[index - 1]] = [
+          newFiles[index - 1],
+          newFiles[index],
+        ];
+      } else if (direction === "down" && index < newFiles.length - 1) {
+        [newFiles[index], newFiles[index + 1]] = [
+          newFiles[index + 1],
+          newFiles[index],
+        ];
+      }
+      return newFiles;
+    });
+    // Clear merged PDF URL when files are reordered
+    setMergedPdfUrl(null);
+  };
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
@@ -136,16 +156,39 @@ export default function PDFMergerTool() {
               <div className="mt-3">
                 <h5>Selected Files:</h5>
                 {files.map((file, index) => (
-                  <div key={index} className="d-flex align-items-center mb-2">
+                  <div
+                    key={index}
+                    className="d-flex align-items-center mb-2 border rounded p-2"
+                  >
                     <i className="fas fa-file-pdf me-2"></i>
                     <span>{file.name}</span>
-                    <Button
-                      variant="link"
-                      className="ms-auto text-danger"
-                      onClick={() => removeFile(index)}
-                    >
-                      <i className="fas fa-times"></i>
-                    </Button>
+                    <div className="ms-auto d-flex align-items-center">
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="me-2"
+                        onClick={() => moveFile(index, "up")}
+                        disabled={index === 0}
+                      >
+                        <i className="fas fa-arrow-up"></i>
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="me-2"
+                        onClick={() => moveFile(index, "down")}
+                        disabled={index === files.length - 1}
+                      >
+                        <i className="fas fa-arrow-down"></i>
+                      </Button>
+                      <Button
+                        variant="link"
+                        className="text-danger"
+                        onClick={() => removeFile(index)}
+                      >
+                        <i className="fas fa-times"></i>
+                      </Button>
+                    </div>
                   </div>
                 ))}
 
