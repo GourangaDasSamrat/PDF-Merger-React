@@ -114,13 +114,17 @@ export default function PDFMergerTool() {
               <p>Drag and drop PDF files here, or click to select files</p>
             </div>
 
-            <Form.Check
-              type="checkbox"
-              label="Automatically download after merging"
-              checked={autoDownload}
-              onChange={(e) => setAutoDownload(e.target.checked)}
-              className="mt-3"
-            />
+            <Form className="mt-3">
+              <Form.Group controlId="autoDownload">
+                <Form.Check
+                  type="checkbox"
+                  label="Automatically download after merging"
+                  checked={autoDownload}
+                  onChange={(e) => setAutoDownload(e.target.checked)}
+                  id="auto-download-checkbox"
+                />
+              </Form.Group>
+            </Form>
 
             {error && (
               <Alert variant="danger" className="mt-3">
