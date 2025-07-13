@@ -13,6 +13,7 @@ import NavBar from "./components/NavBar";
 import NotFound from "./components/NotFound";
 import PDFMergerTool from "./components/PDFMergerTool";
 import Pricing from "./components/Pricing";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 import { AppProvider } from "./context/AppProvider";
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
               <Route path="/about" element={<About />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
               {/* Redirects */}
               <Route path="/home" element={<Navigate to="/" replace />} />

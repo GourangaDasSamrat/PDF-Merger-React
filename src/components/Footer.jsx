@@ -1,4 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const socialLinks = [
@@ -32,6 +33,28 @@ export default function Footer() {
             ))}
           </Col>
           <Col xs={12} className="text-center mt-3">
+            <div className="mb-2">
+              <Link
+                to="/privacy-policy"
+                className="text-decoration-none mx-2 text-secondary"
+              >
+                Privacy Policy
+              </Link>
+              <span className="text-secondary">•</span>
+              <Link
+                to="/about"
+                className="text-decoration-none mx-2 text-secondary"
+              >
+                About
+              </Link>
+              <span className="text-secondary">•</span>
+              <Link
+                to="/contact"
+                className="text-decoration-none mx-2 text-secondary"
+              >
+                Contact
+              </Link>
+            </div>
             <small>
               &copy; {new Date().getFullYear()} PDF Hero. All rights reserved.
             </small>
