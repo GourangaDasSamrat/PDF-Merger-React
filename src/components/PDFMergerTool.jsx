@@ -1,7 +1,7 @@
 import { SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
 import PDFMerger from "pdf-merger-js";
 import { useCallback, useState } from "react";
-import { Alert, Button, Card, Container } from "react-bootstrap";
+import { Alert, Button, Card, Container, Form } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
 import { useAppContext } from "../hooks/useAppContext";
 
@@ -9,6 +9,8 @@ export default function PDFMergerTool() {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [mergedPdfUrl, setMergedPdfUrl] = useState(null);
+  const [autoDownload, setAutoDownload] = useState(true);
   const { mergeCount, incrementMergeCount } = useAppContext();
   const { user } = useUser();
 
@@ -56,17 +58,17 @@ export default function PDFMergerTool() {
 
       const mergedPdf = await merger.saveAsBlob();
       const url = URL.createObjectURL(mergedPdf);
-
-      // Create a download link and click it
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "merged.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
+      setMergedPdfUrl(url);
       incrementMergeCount();
-      setFiles([]);
+
+      if (autoDownload) {
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "merged.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
     } catch (err) {
       setError("Error merging PDFs. Please try again.");
       console.error(err);
@@ -75,8 +77,21 @@ export default function PDFMergerTool() {
     }
   };
 
+  const handleDownload = () => {
+    if (!mergedPdfUrl) return;
+
+    const link = document.createElement("a");
+    link.href = mergedPdfUrl;
+    link.download = "merged.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const removeFile = (index) => {
     setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+    // Clear merged PDF URL when files are modified
+    setMergedPdfUrl(null);
   };
 
   return (
@@ -98,6 +113,14 @@ export default function PDFMergerTool() {
               <i className="fas fa-file-pdf fa-3x mb-3"></i>
               <p>Drag and drop PDF files here, or click to select files</p>
             </div>
+
+            <Form.Check
+              type="checkbox"
+              label="Automatically download after merging"
+              checked={autoDownload}
+              onChange={(e) => setAutoDownload(e.target.checked)}
+              className="mt-3"
+            />
 
             {error && (
               <Alert variant="danger" className="mt-3">
@@ -137,6 +160,19 @@ export default function PDFMergerTool() {
                     "Merge PDFs"
                   )}
                 </Button>
+
+                {mergedPdfUrl && !autoDownload && (
+                  <div className="mt-3">
+                    <Button
+                      variant="success"
+                      onClick={handleDownload}
+                      disabled={loading}
+                    >
+                      <i className="fas fa-download me-2"></i>
+                      Download Merged PDF
+                    </Button>
+                  </div>
+                )}
               </div>
             )}
 
