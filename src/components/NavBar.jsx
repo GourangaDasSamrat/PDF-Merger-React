@@ -6,6 +6,7 @@ import {
 } from "@clerk/clerk-react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo.svg";
 import { useAppContext } from "../hooks/useAppContext";
 
 export default function NavBar() {
@@ -19,8 +20,17 @@ export default function NavBar() {
   return (
     <Navbar expand="lg" className="navbar fixed-top py-3 mb-5">
       <Container className="px-4">
-        <Navbar.Brand as={Link} to="/" className="me-4 py-2">
-          <span className="brand-text">PDF Hero</span>
+        <Navbar.Brand
+          as={Link}
+          to="/"
+          className="me-4 py-2 d-flex align-items-center"
+        >
+          <img
+            src={logo}
+            alt="PDF Hero Logo"
+            className="me-2"
+            style={{ width: "50px", height: "50px" }}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
