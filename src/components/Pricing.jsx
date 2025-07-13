@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
+import ComingSoon from "./ComingSoon";
 import "./Pricing.css";
 
 export default function Pricing() {
   const [hoveredPlan, setHoveredPlan] = useState(null);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   const plans = [
     {
@@ -52,7 +54,7 @@ export default function Pricing() {
   ];
 
   const handleUpgrade = () => {
-    alert("Coming Soon!");
+    setShowComingSoon(true);
   };
 
   return (
@@ -135,6 +137,10 @@ export default function Pricing() {
           ))}
         </Row>
       </Container>
+      <ComingSoon
+        show={showComingSoon}
+        onHide={() => setShowComingSoon(false)}
+      />
     </>
   );
 }
