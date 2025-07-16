@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Col, Container, Row } from "react-bootstrap";
-import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import "./About.css";
+import SEO from "./SEO";
 
 const HeroSection = styled.div`
   background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
@@ -87,27 +87,31 @@ export default function About() {
 
   return (
     <>
-      <Helmet>
-        <title>About Us | PDF Hero</title>
-        <meta
-          name="description"
-          content="Learn more about PDF Hero, the team, and our mission to make PDF merging simple, fast, and secure for everyone."
-        />
-        <meta
-          name="keywords"
-          content="About PDF Hero, PDF merger, team, mission, secure PDF, fast PDF"
-        />
-        <meta property="og:title" content="About Us | PDF Hero" />
-        <meta
-          property="og:description"
-          content="Discover the story and mission behind PDF Hero, your trusted PDF merging tool."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://pdfhero.app/about" />
-        <meta property="og:image" content="/img/logo.svg" />
-        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-      </Helmet>
+      <SEO
+        title="About Us | PDF Hero"
+        description="Learn more about PDF Hero, the team, and our mission to make PDF merging simple, fast, and secure for everyone."
+        url="https://pdfhero.app/about"
+        image="/img/logo.svg"
+        type="website"
+        keywords="About PDF Hero, PDF merger, team, mission, secure PDF, fast PDF"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Us | PDF Hero",
+          description:
+            "Learn more about PDF Hero, the team, and our mission to make PDF merging simple, fast, and secure for everyone.",
+          url: "https://pdfhero.app/about",
+          publisher: {
+            "@type": "Organization",
+            name: "PDF Hero",
+            url: "https://pdfhero.app/",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://pdfhero.app/img/logo.svg",
+            },
+          },
+        }}
+      />
       <div className="about-page">
         <HeroSection>
           <Container>

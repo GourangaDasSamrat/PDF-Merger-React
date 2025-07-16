@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { Helmet } from "react-helmet";
 import ComingSoon from "./ComingSoon";
 import "./Pricing.css";
+import SEO from "./SEO";
 
 export default function Pricing() {
   const [hoveredPlan, setHoveredPlan] = useState(null);
@@ -59,27 +59,22 @@ export default function Pricing() {
 
   return (
     <>
-      <Helmet>
-        <title>Pricing | PDF Hero</title>
-        <meta
-          name="description"
-          content="View our competitive pricing plans for PDF Hero. Find the perfect plan for your PDF merging needs, from free to premium options."
-        />
-        <meta
-          name="keywords"
-          content="PDF pricing, PDF merger plans, PDF Hero, premium PDF, free PDF merge"
-        />
-        <meta property="og:title" content="Pricing | PDF Hero" />
-        <meta
-          property="og:description"
-          content="Compare PDF Hero's free and premium plans for merging PDF files online."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://pdfhero.app/pricing" />
-        <meta property="og:image" content="/img/logo.svg" />
-        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-      </Helmet>
+      <SEO
+        title="Pricing | PDF Hero"
+        description="View our competitive pricing plans for PDF Hero. Find the perfect plan for your PDF merging needs, from free to premium options."
+        url="https://pdfhero.app/pricing"
+        image="/img/logo.svg"
+        type="website"
+        keywords="PDF pricing, PDF merger plans, PDF Hero, premium PDF, free PDF merge"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Pricing | PDF Hero",
+          description:
+            "View our competitive pricing plans for PDF Hero. Find the perfect plan for your PDF merging needs, from free to premium options.",
+          url: "https://pdfhero.app/pricing",
+        }}
+      />
       <Container fluid className="pricing-section py-5 mt-5">
         <div className="pricing-header">
           <h2 className="text-center mt-5 mb-2">Choose Your Plan</h2>

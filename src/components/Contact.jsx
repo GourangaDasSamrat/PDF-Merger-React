@@ -1,8 +1,8 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
-import { Helmet } from "react-helmet";
 import styled from "styled-components";
+import SEO from "./SEO";
 
 const ContactContainer = styled.div`
   padding: 2rem;
@@ -40,7 +40,6 @@ function Contact() {
     e.preventDefault();
     setLoading(true);
     setStatus({ type: "", message: "" });
-
     try {
       await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -48,14 +47,12 @@ function Contact() {
         formRef.current,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
-
       setStatus({
         type: "success",
         message: "Thank you for your feedback! We will get back to you soon.",
       });
       formRef.current.reset();
     } catch (err) {
-      console.error(err);
       setStatus({
         type: "danger",
         message: "Failed to send message. Please try again later.",
@@ -67,27 +64,31 @@ function Contact() {
 
   return (
     <>
-      <Helmet>
-        <title>Contact Us | PDF Hero</title>
-        <meta
-          name="description"
-          content="Get in touch with the PDF Hero team for questions, support, or feedback. We're here to help you with your PDF merging needs."
-        />
-        <meta
-          name="keywords"
-          content="contact PDF Hero, PDF support, PDF help, PDF feedback"
-        />
-        <meta property="og:title" content="Contact Us | PDF Hero" />
-        <meta
-          property="og:description"
-          content="Contact PDF Hero for support, questions, or feedback about our PDF merger tool."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://pdfhero.app/contact" />
-        <meta property="og:image" content="/img/logo.svg" />
-        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-      </Helmet>
+      <SEO
+        title="Contact Us | PDF Hero"
+        description="Get in touch with the PDF Hero team for questions, support, or feedback. We're here to help you with your PDF merging needs."
+        url="https://pdfhero.app/contact"
+        image="/img/logo.svg"
+        type="website"
+        keywords="contact PDF Hero, PDF support, PDF help, PDF feedback"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Us | PDF Hero",
+          description:
+            "Get in touch with the PDF Hero team for questions, support, or feedback. We're here to help you with your PDF merging needs.",
+          url: "https://pdfhero.app/contact",
+          publisher: {
+            "@type": "Organization",
+            name: "PDF Hero",
+            url: "https://pdfhero.app/",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://pdfhero.app/img/logo.svg",
+            },
+          },
+        }}
+      />
       <Container fluid className="py-5">
         <ContactContainer>
           <div className="row justify-content-center">

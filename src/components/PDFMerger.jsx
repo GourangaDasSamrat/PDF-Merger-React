@@ -3,7 +3,7 @@ import PDFMerger from "pdf-merger-js";
 import { useCallback, useState } from "react";
 import { Alert, Button, Card, Container } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
-import { Helmet } from "react-helmet";
+import SEO from "./SEO";
 import { useAppContext } from "../context/AppContext";
 
 export default function PDFMergerTool() {
@@ -37,23 +37,74 @@ export default function PDFMergerTool() {
       setError("Please select at least 2 PDF files to merge");
       return;
     }
-
     if (mergeCount >= 5 && !user.publicMetadata.isPremium) {
-      setError(
-        "You have reached the maximum number of free merges. Please upgrade to premium."
-      );
+      setError("You have reached the maximum number of free merges. Please upgrade to premium.");
       return;
     }
-
     setLoading(true);
     setError("");
-
     try {
       const merger = new PDFMerger();
-
       for (const file of files) {
         await merger.add(file);
       }
+      const mergedPdf = await merger.saveAsBlob();
+      const url = URL.createObjectURL(mergedPdf);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "merged.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      incrementMergeCount();
+      setFiles([]);
+    } catch (err) {
+      setError("Error merging PDFs. Please try again.");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const removeFile = (index) => {
+    setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+  };
+
+  return (
+    <>
+      <SEO
+        title="PDF Merger | Merge PDF Files Online Free | PDF Hero"
+        description="Merge multiple PDF files into one document easily with PDF Hero. Fast, secure, and user-friendly online PDF merger tool."
+        url="https://pdfhero.app/"
+        image="/img/logo.svg"
+        type="website"
+        keywords="merge PDF, PDF merger, combine PDF, free PDF tool, online PDF merger"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          'name': 'PDF Merger | PDF Hero',
+          'description': 'Merge multiple PDF files into one document easily with PDF Hero. Fast, secure, and user-friendly online PDF merger tool.',
+          'url': 'https://pdfhero.app/',
+          'applicationCategory': 'BusinessApplication',
+          'operatingSystem': 'All',
+          'offers': {
+            '@type': 'Offer',
+            'price': '0',
+            'priceCurrency': 'USD',
+            'availability': 'https://schema.org/InStock'
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'PDF Hero',
+            'url': 'https://pdfhero.app/',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://pdfhero.app/img/logo.svg'
+            }
+          }
+        }}
+      />
+      <Container className="py-5 mt-5">
 
       const mergedPdf = await merger.saveAsBlob();
       const url = URL.createObjectURL(mergedPdf);
@@ -80,30 +131,7 @@ export default function PDFMergerTool() {
     setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
   };
 
-  return (
-    <>
-      <Helmet>
-        <title>PDF Merger | Merge PDF Files Online Free | PDF Hero</title>
-        <meta
-          name="description"
-          content="Merge multiple PDF files into one document easily with PDF Hero. Fast, secure, and user-friendly online PDF merger tool."
-        />
-        <meta
-          name="keywords"
-          content="merge PDF, PDF merger, combine PDF, free PDF tool, online PDF merger"
-        />
-        <meta property="og:title" content="PDF Merger | PDF Hero" />
-        <meta
-          property="og:description"
-          content="Merge PDF files online for free with PDF Hero. Secure, fast, and easy to use."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://pdfhero.app/" />
-        <meta property="og:image" content="/img/logo.svg" />
-        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-      </Helmet>
-      <Container className="py-5 mt-5">
+  // ...existing code...
         <SignedOut>
           <Alert variant="info">Please sign in to merge PDFs</Alert>
         </SignedOut>

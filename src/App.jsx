@@ -14,34 +14,31 @@ import NotFound from "./components/NotFound";
 import PDFMergerTool from "./components/PDFMergerTool";
 import Pricing from "./components/Pricing";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import { AppProvider } from "./context/AppProvider";
 
 export default function App() {
   return (
-    <AppProvider>
-      <Router>
-        <div className="d-flex flex-column min-vh-100">
-          <NavBar />
-          <main className="flex-grow-1">
-            <Routes>
-              <Route path="/" element={<PDFMergerTool />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        <NavBar />
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path="/" element={<PDFMergerTool />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-              {/* Redirects */}
-              <Route path="/home" element={<Navigate to="/" replace />} />
-              <Route path="/merge" element={<Navigate to="/" replace />} />
-              <Route path="/merge-pdf" element={<Navigate to="/" replace />} />
+            {/* Redirects */}
+            <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="/merge" element={<Navigate to="/" replace />} />
+            <Route path="/merge-pdf" element={<Navigate to="/" replace />} />
 
-              {/* 404 Not Found */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </AppProvider>
+            {/* 404 Not Found */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }

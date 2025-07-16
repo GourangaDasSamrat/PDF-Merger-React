@@ -10,14 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@clerk/clerk-react": "^5.33.0",
+    "@clerk/clerk-react": "^5.35.1",
     "@emailjs/browser": "^4.4.1",
     "bootstrap": "^5.3.7",
     "framer-motion": "^12.23.3",
     "pdf-merger-js": "^5.1.2",
-    "react": "^19.1.0",
-    "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.1.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.0",
+    "react-dom": "^18.2.0",
     "react-dropzone": "^14.3.8",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^7.6.3",
