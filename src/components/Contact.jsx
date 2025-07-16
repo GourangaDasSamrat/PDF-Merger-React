@@ -11,7 +11,7 @@ const ContactContainer = styled.div`
 `;
 
 const ContactForm = styled(Form)`
-  background-color: white;
+  background-color: var(--glass-bg);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
