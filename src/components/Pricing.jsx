@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import ComingSoon from "./ComingSoon";
 import "./Pricing.css";
 
@@ -60,23 +60,24 @@ export default function Pricing() {
   return (
     <>
       <Helmet>
-        <title>Pricing - PDF Merger Tool</title>
+        <title>Pricing | PDF Hero</title>
         <meta
           name="description"
-          content="View our competitive pricing plans for the PDF merger tool. Find the perfect plan for your PDF merging needs."
+          content="View our competitive pricing plans for PDF Hero. Find the perfect plan for your PDF merging needs, from free to premium options."
         />
+        <meta
+          name="keywords"
+          content="PDF pricing, PDF merger plans, PDF Hero, premium PDF, free PDF merge"
+        />
+        <meta property="og:title" content="Pricing | PDF Hero" />
+        <meta
+          property="og:description"
+          content="Compare PDF Hero's free and premium plans for merging PDF files online."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pdfhero.app/pricing" />
+        <meta property="og:image" content="/img/logo.svg" />
         <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/favicon/favicon-96x96.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Helmet>
       <Container fluid className="pricing-section py-5 mt-5">

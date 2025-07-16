@@ -1,7 +1,6 @@
 import { ClerkProvider } from "@clerk/clerk-react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HelmetProvider } from "react-helmet-async";
 import App from "./App.jsx";
 import { AppProvider } from "./context/AppProvider.jsx";
 import "./index.css";
@@ -16,11 +15,9 @@ if (!PUBLISHABLE_KEY) {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-      <HelmetProvider>
-        <AppProvider>
-          <App />
-        </AppProvider>
-      </HelmetProvider>
+      <AppProvider>
+        <App />
+      </AppProvider>
     </ClerkProvider>
   </React.StrictMode>
 );

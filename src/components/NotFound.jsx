@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -42,7 +42,8 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>404 - Page Not Found | PDF Merger Tool</title>
+        <title>404 - Page Not Found | PDF Hero</title>
+        <meta name="robots" content="noindex, follow" />
         <meta
           name="description"
           content="The page you are looking for could not be found. Please check the URL or return to our homepage."

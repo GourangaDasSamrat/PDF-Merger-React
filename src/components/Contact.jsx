@@ -1,7 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 const ContactContainer = styled.div`
@@ -68,23 +68,24 @@ function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact Us - PDF Merger Tool</title>
+        <title>Contact Us | PDF Hero</title>
         <meta
           name="description"
-          content="Get in touch with our team for any questions or support regarding our PDF merger tool. We're here to help!"
+          content="Get in touch with the PDF Hero team for questions, support, or feedback. We're here to help you with your PDF merging needs."
         />
+        <meta
+          name="keywords"
+          content="contact PDF Hero, PDF support, PDF help, PDF feedback"
+        />
+        <meta property="og:title" content="Contact Us | PDF Hero" />
+        <meta
+          property="og:description"
+          content="Contact PDF Hero for support, questions, or feedback about our PDF merger tool."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pdfhero.app/contact" />
+        <meta property="og:image" content="/img/logo.svg" />
         <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/favicon/favicon-96x96.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Helmet>
       <Container fluid className="py-5">

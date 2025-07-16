@@ -3,7 +3,7 @@ import PDFMerger from "pdf-merger-js";
 import { useCallback, useState } from "react";
 import { Alert, Button, Card, Container } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import { useAppContext } from "../context/AppContext";
 
 export default function PDFMergerTool() {
@@ -83,23 +83,24 @@ export default function PDFMergerTool() {
   return (
     <>
       <Helmet>
-        <title>PDF Merger - Combine PDF Files Online</title>
+        <title>PDF Merger | Merge PDF Files Online Free | PDF Hero</title>
         <meta
           name="description"
-          content="Merge multiple PDF files into one document easily with our free online PDF merger tool. Fast, secure, and user-friendly."
+          content="Merge multiple PDF files into one document easily with PDF Hero. Fast, secure, and user-friendly online PDF merger tool."
         />
+        <meta
+          name="keywords"
+          content="merge PDF, PDF merger, combine PDF, free PDF tool, online PDF merger"
+        />
+        <meta property="og:title" content="PDF Merger | PDF Hero" />
+        <meta
+          property="og:description"
+          content="Merge PDF files online for free with PDF Hero. Secure, fast, and easy to use."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://pdfhero.app/" />
+        <meta property="og:image" content="/img/logo.svg" />
         <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="96x96"
-          href="/favicon/favicon-96x96.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Helmet>
       <Container className="py-5 mt-5">
