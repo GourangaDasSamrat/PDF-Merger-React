@@ -1,9 +1,9 @@
 # PDF Hero - Modern PDF Merger Tool 🚀
 
 <div align="center">
-
-![PDF Hero Logo](public/img/logo.svg)
-
+   
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/GourangaDasSamrat/PDF-Merger-React)
+  
 ### 🌐 [Live Demo](https://pdf-hero-mauve.vercel.app/)
 
 [![GitHub stars](https://img.shields.io/github/stars/GourangaDasSamrat/PDF-Merger-React?style=social)](https://github.com/GourangaDasSamrat/PDF-Merger-React/stargazers)
