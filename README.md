@@ -1,10 +1,9 @@
 # PDF Hero - Modern PDF Merger Tool 🚀
 
+PDF Hero is a modern, user-friendly web application that allows users to merge multiple PDF files quickly and efficiently. Built with React and modern web technologies, it provides a seamless experience for handling PDF documents.
+
 <div align="center">
    
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/GourangaDasSamrat/PDF-Merger-React)
-  
-### 🌐 [Live Demo](https://pdf-hero-mauve.vercel.app/)
 
 [![GitHub stars](https://img.shields.io/github/stars/GourangaDasSamrat/PDF-Merger-React?style=social)](https://github.com/GourangaDasSamrat/PDF-Merger-React/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/GourangaDasSamrat/PDF-Merger-React?style=social)](https://github.com/GourangaDasSamrat/PDF-Merger-React/network/members)
@@ -12,7 +11,26 @@
 
 </div>
 
-PDF Hero is a modern, user-friendly web application that allows users to merge multiple PDF files quickly and efficiently. Built with React and modern web technologies, it provides a seamless experience for handling PDF documents.
+---
+
+<div align="center">
+  
+  [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/GourangaDasSamrat/PDF-Merger-React)
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/GourangaDasSamrat/PDF-Merger-React)
+  
+  <a href="https://pdf-hero-mauve.vercel.app/"><strong>✨ View Live Demo »</strong></a>
+
+</div>
+  <p style="margin-top:16px;">
+    <a href="https://deepwiki.com/GourangaDasSamrat/PDF-Merger-React" title="Detailed documentation on DeepWiki">
+      <img alt="DeepWiki Docs" src="https://img.shields.io/badge/Documentation-DeepWiki-4B79FF?style=for-the-badge&logo=readthedocs&logoColor=white" />
+    </a>
+  </p>
+  <p><em>For detailed documentation, guides, and configuration notes — visit the DeepWiki page above.</em></p>
+</div>
+
+---
 
 ## ✨ Features
 
