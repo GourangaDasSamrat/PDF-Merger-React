@@ -6,7 +6,7 @@ PDF Hero is a modern, user-friendly web application that allows users to merge m
 
 [![GitHub stars](https://img.shields.io/github/stars/GourangaDasSamrat/PDF-Merger-React?style=social)](https://github.com/GourangaDasSamrat/PDF-Merger-React/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/GourangaDasSamrat/PDF-Merger-React?style=social)](https://github.com/GourangaDasSamrat/PDF-Merger-React/network/members)
-[![Vercel Deploy](https://img.shields.io/badge/Vercel-Deployed-success)](https://pdf-hero.gouranga.qzz.io/)
+[![Vercel Deploy](https://img.shields.io/badge/Vercel-Deployed-success)](https://pdf-hero.gouranga.eu.org/)
 
 </div>
 
@@ -18,7 +18,7 @@ PDF Hero is a modern, user-friendly web application that allows users to merge m
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/GourangaDasSamrat/PDF-Merger-React)
 
-<a href="https://pdf-hero.gouranga.qzz.io"><strong>✨ View Live Demo »</strong></a>
+<a href="https://pdf-hero.gouranga.eu.org"><strong>✨ View Live Demo »</strong></a>
 
 </div>
   <p style="margin-top:16px;">
